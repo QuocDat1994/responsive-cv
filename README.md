@@ -1,6 +1,6 @@
 Responsive Curriculum Vitae
 ============
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](http://responsive-cv.quocdat1994.surge.sh/)
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](http://responsive-cv.quocdat1994.surge.sh/) ![Responsive](https://img.shields.io/badge/responsive-website-blue)
 
 This is a simple responsive website built by HTML, Vanilla JS and Sass. I built this website to practice building responsive website.
 
