@@ -1,17 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Noticia+Text&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
 
-// Variables
+// ===== Variables =====
 $primary-color: #e94956;
 $secondary-color: #61d0d4;
 $third-color: #d1c927;
 $background-color: #eae5e5;
 
-// Mixin
+// ===== Mixin =====
 @mixin link($color, $size) {
   color: $color;
   font-size: $size;
   text-decoration: none;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin circle($width, $height, $background) {
+  width: $width;
+  height: $height;
+  background: $background;
+  border-radius: 100%;
 }
 
 @mixin circle-hover($color) {
@@ -23,7 +36,7 @@ $background-color: #eae5e5;
   }
 }
 
-// CSS Reset
+// ===== CSS Reset =====
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +44,7 @@ $background-color: #eae5e5;
   font-family: "Noticia Text", serif;
 }
 
-// Common css
+// ===== Common css =====
 html {
   font-size: 14px;
   height: 100%;
@@ -40,9 +53,9 @@ html {
 body {
   height: 100%;
   min-width: 320px;
-  background: $background-color;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  background: $background-color;
 }
 
 header,
@@ -59,7 +72,7 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
-// Header
+// ===== Header =====
 header {
   display: flex;
 
@@ -79,11 +92,9 @@ header {
     width: 4em;
     height: 4em;
     margin-left: auto;
-
     border: none;
     border-radius: 5px;
     background: #4d4d4d;
-
     transition: all 0.5s ease-in-out;
     z-index: 2;
 
@@ -115,6 +126,7 @@ header {
 
       ~ nav {
         z-index: 1;
+
         ul {
           opacity: 1;
         }
@@ -149,9 +161,7 @@ header {
         border-bottom: 1px solid white;
 
         a {
-          color: white;
-          text-decoration: none;
-          cursor: pointer;
+          @include link(white, initial);
 
           &.is-active {
             color: $primary-color;
@@ -162,7 +172,7 @@ header {
   }
 }
 
-// Main
+// ===== Main =====
 main {
   max-width: 1024px;
   margin: 0 auto;
@@ -192,18 +202,13 @@ main {
       gap: 1em;
 
       .circle-group__link {
-        width: 85px;
-        height: 85px;
         text-align: center;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        color: white;
         text-transform: uppercase;
-        font-size: small;
         font-family: "Roboto", serif;
+
+        @include link(white, small);
+        @include circle(85px, 85px, none);
+        @include flex-center;
 
         &.circle-group__link--pink {
           @include circle-hover($primary-color);
@@ -220,15 +225,13 @@ main {
     }
 
     .home__avatar {
-      width: 100%;
-
       .avatar__container {
         width: 300px;
         margin: 0 auto;
 
         img {
-          border-radius: 100%;
           width: 100%;
+          border-radius: 100%;
         }
       }
     }
@@ -252,20 +255,15 @@ main {
 
     .resume__info {
       margin: 1rem 0;
-      width: 120px;
-      height: 120px;
-      border-radius: 100%;
       color: white;
-      background: $primary-color;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
       font-size: 1.2rem;
+      @include flex-center;
+      @include circle(120px, 120px, $primary-color);
     }
 
     .resume__job {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       font-weight: bold;
     }
 
@@ -287,15 +285,10 @@ main {
       }
 
       .resume__icon {
-        width: 45px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         color: white;
-        border-radius: 100%;
         font-size: 1.5rem;
-        background: $secondary-color;
+        @include flex-center;
+        @include circle(45px, 45px, $secondary-color);
       }
 
       .resume__info--small {
@@ -335,14 +328,9 @@ main {
         flex-wrap: wrap;
 
         .projects__no {
-          width: 85px;
-          height: 85px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 100%;
           color: white;
-          background: $secondary-color;
+          @include flex-center;
+          @include circle(85px, 85px, $secondary-color);
         }
 
         .projects__title {
@@ -368,17 +356,14 @@ main {
 
     .contact__social {
       display: flex;
+
       a {
-        text-decoration: none;
-        color: white;
-        width: 45px;
-        height: 45px;
         margin-right: 1rem;
-        background: black;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
+        @include flex-center;
+        @include link(white, inherit);
+        @include circle(45px, 45px, black);
+
         i {
           font-size: 1.5rem;
         }
@@ -430,7 +415,7 @@ main {
   }
 }
 
-// Footer
+// ===== Footer =====
 footer {
   background: $primary-color;
   display: flex;
@@ -447,15 +432,10 @@ footer {
     }
 
     .footer__icon {
-      width: 50px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       color: $primary-color;
-      background: $secondary-color;
-      border-radius: 100%;
       font-size: 1.5em;
+      @include flex-center;
+      @include circle(50px, 100%, $secondary-color);
     }
 
     .footer__info {
@@ -475,6 +455,7 @@ footer {
   }
 }
 
+// ===== Media Queries ==========
 // ===== Smartphone =====
 @media screen and (min-width: 320px) {
   html {
@@ -488,12 +469,6 @@ footer {
       display: grid;
       grid-template-columns: 0.5fr 1.5fr;
       align-items: center;
-
-      .resume__info {
-        grid-column: 1 / span 1;
-        grid-row: 1 / -1;
-        align-self: start;
-      }
 
       section,
       .resume__detail {
@@ -527,21 +502,23 @@ footer {
 
     .header__nav {
       position: relative;
-      z-index: 1;
       width: auto;
       height: auto;
       margin-left: auto;
+      z-index: 1;
+
       ul {
         display: flex;
         align-items: center;
         padding: 0;
         opacity: 1;
         background: none;
+
         li {
           border: none;
-          margin: 0;
           padding: 0;
           margin-right: 1em;
+
           a {
             color: black;
             font-size: 0.8em;
@@ -563,22 +540,27 @@ footer {
       order: 1;
       grid-row: 1 / span 3;
       align-self: center;
+
       .avatar__container {
         width: 325px;
       }
     }
+
     .home__greeting {
       order: 2;
       grid-column: 2 / span 1;
     }
+
     .home__circle-group {
       order: 3;
       grid-column: 2 / span 1;
+
       .circle-group__link {
         width: 100px;
         height: 100px;
       }
     }
+
     .home__introduction {
       order: 4;
       grid-column: 2 / span 1;
@@ -608,7 +590,7 @@ footer {
 
     .resume__soft-skill {
       grid-column: 2 / span 1;
-      grid-row: 2 / 4;
+      grid-row: 2 / span 2;
 
       flex-direction: column;
       align-items: center;
@@ -668,8 +650,4 @@ footer {
       }
     }
   }
-}
-
-// ===== Desktop =====
-@media screen and (min-width: 1680px) {
 }
