@@ -7,11 +7,15 @@
   font-family: "Noticia Text", serif; }
 
 html {
-  font-size: 14px; }
+  font-size: 14px;
+  height: 100%; }
 
 body {
+  height: 100%;
+  min-width: 320px;
   background: #eae5e5;
-  min-width: 320px; }
+  display: grid;
+  grid-template-rows: auto 1fr auto; }
 
 header,
 main,
@@ -353,8 +357,7 @@ footer {
             color: #61d0d4; }
   main.home {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr; }
+    grid-template-columns: 1fr 1fr; }
     main.home .home__avatar {
       order: 1;
       grid-row: 1 / span 3;

@@ -34,11 +34,15 @@ $background-color: #eae5e5;
 // Common css
 html {
   font-size: 14px;
+  height: 100%;
 }
 
 body {
-  background: $background-color;
+  height: 100%;
   min-width: 320px;
+  background: $background-color;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 header,
@@ -554,7 +558,6 @@ footer {
   main.home {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
 
     .home__avatar {
       order: 1;
