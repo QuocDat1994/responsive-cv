@@ -1,0 +1,14 @@
+{
+  "name": "curriculum-vitae-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dat <dat.truong@metanet.co.kr>",
+  "license": "MIT",
+  "scripts": {
+    "sass": "node-sass --watch ./stylesheet/styles.scss ./stylesheet/styles.css"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.10"
+  }
+}
